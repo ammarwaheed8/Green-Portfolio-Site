@@ -1,0 +1,2385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    
+    /* color: #7dfaa0;    //Green Color */
+    /* color: #3d3d3d;    //Charcoal Gray Color */
+    color: white;
+    background-color: #292929;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Hamburger Menu for Mobile Devices --- */
+#top-bar {
+  display: none;
+}
+
+#menu__toggle {
+  opacity: 0;
+}
+
+#menu__toggle:checked + .menu__btn > span {
+  transform: rotate(45deg);
+}
+
+#menu__toggle:checked + .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+
+#menu__toggle:checked + .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+#menu__toggle:checked ~ .menu__box {
+  left: 0 !important;
+}
+
+.menu__btn {
+  position: absolute;
+  top: 36px;
+  left: 13px;
+  width: 23px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #7dfaa0;
+  transition-duration: .25s;
+}
+
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
+}
+
+.menu__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  top: 4.8rem;
+  left: -170%;
+  width: 300px;
+  height: 25rem;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #3d3d3d;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+}
+
+.menu__item {
+  display: block;
+  padding: 12px 100px;
+  color: #7dfaa0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+
+.menu__item:hover {
+  background-color: #535353;
+  color: #eaeaea;
+}
+
+
+/* ---- Name Animation Logo Tailwind ---- */
+#animated-logo {
+    /* border: 2px solid rgb(38, 255, 0); */
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 15px 10px;
+}
+
+#animated-logo span {
+    font-size: 3.4em;
+    margin: -11px 5px;
+}
+
+.loader {
+    --path: #7dfaa0;
+    --dot: #fefefe;
+    --duration: 3s;
+    width: 44px;
+    height: 44px;
+    position: relative;
+  }
+  
+  .loader:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    display: block;
+    background: var(--dot);
+    top: 37px;
+    left: 19px;
+    transform: translate(-18px, -18px);
+    animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
+      infinite;
+  }
+  
+  .loader svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .loader svg rect,
+  .loader svg polygon,
+  .loader svg circle {
+    fill: none;
+    stroke: var(--path);
+    stroke-width: 10px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  
+  .loader svg polygon {
+    stroke-dasharray: 145 76 145 76;
+    stroke-dashoffset: 0;
+    animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
+      infinite;
+  }
+  
+  .loader svg rect {
+    stroke-dasharray: 192 64 192 64;
+    stroke-dashoffset: 0;
+    animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+  }
+  
+  .loader svg circle {
+    stroke-dasharray: 150 50 150 50;
+    stroke-dashoffset: 75;
+    animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
+      infinite;
+  }
+  
+  .loader.triangle {
+    width: 46px;
+  }
+  
+  .loader.triangle:before {
+    left: 21px;
+    transform: translate(-10px, -18px);
+    animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
+      infinite;
+  }
+  
+  @keyframes pathTriangle {
+    33% {
+      stroke-dashoffset: 74;
+    }
+  
+    66% {
+      stroke-dashoffset: 147;
+    }
+  
+    100% {
+      stroke-dashoffset: 221;
+    }
+  }
+  
+  @keyframes dotTriangle {
+    33% {
+      transform: translate(0, 0);
+    }
+  
+    66% {
+      transform: translate(10px, -18px);
+    }
+  
+    100% {
+      transform: translate(-10px, -18px);
+    }
+  }
+  
+  @keyframes pathRect {
+    25% {
+      stroke-dashoffset: 64;
+    }
+  
+    50% {
+      stroke-dashoffset: 128;
+    }
+  
+    75% {
+      stroke-dashoffset: 192;
+    }
+  
+    100% {
+      stroke-dashoffset: 256;
+    }
+  }
+  
+  .loader {
+    display: inline-block;
+    margin: 0 8px;
+  }
+
+
+/* Green Button Style + Hover Effect */
+.green-button {
+    text-decoration: none;
+    position: relative;
+    padding: 15px 40px;
+    margin: 0 20px 0 0;
+    border-radius: 7px;
+    border: 2px solid #7dfaa0;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: #7dfaa0;
+    color: #292929;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.green-button:hover {
+  color: #7dfaa0;
+  background: #292929;
+  box-shadow: 0 0 30px 5px rgb(125, 250, 160, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.green-button:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+.green-button::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.green-button:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
+
+
+
+/* Transparent Button Style + Hover Effect */
+.transparent-button {
+    text-decoration: none;
+    position: relative;
+    padding: 15px 40px;
+    border-radius: 7px;
+    border: 2px solid #7dfaa0;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    background: #292929;
+    color: #7dfaa0;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.transparent-button:hover {
+  color: #292929;
+  background: #7dfaa0;
+  box-shadow: 0 0 30px 5px rgb(125, 250, 160, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.transparent-button:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+.transparent-button::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.transparent-button:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}
+
+
+/* Green Design Bar Style */
+.green-bar {
+  /* border: 2px solid gold; */
+  color: #7dfaa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.green-bar span {
+  margin: 10px 7px 7px 7px ;
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  border: 2px solid #7dfaa0;
+  background-color: #7dfaa0;
+}
+
+.green-bar span:nth-child(odd) {
+  width: 125px;
+  height: 5px;
+} 
+
+/* Center Heading Style */
+.center-heading {
+  /* border: 2px solid red; */
+  font-size: 3em;
+}
+
+
+/* ----  Header Part CSS Style ----  */
+header {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 90.5vw;
+  margin-top: 25px;
+}
+
+nav {
+  /* border: 2px solid blue; */
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  /* border: 2px solid green; */
+  color: #e7e7e7;
+  font-size: 1.2em;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: -2px 20px;
+}
+
+li:hover {
+  color: #95fe96f8;
+  transition: border 0.3s ease-in-out;
+  border-bottom: 1px solid #92fb94;
+}
+
+/* Green Nav Contact Button Style + Hover Effect */
+.nav-contac-btn {
+  text-decoration: none;
+  position: relative;
+  padding: 7px 8px;
+  margin: 0 0 0 20px;
+  border-radius: 7px;
+  border: 2px solid #7dfaa0;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  background: #7dfaa0;
+  color: #292929;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.nav-contac-btn:hover {
+color: #7dfaa0;
+background: #292929;
+box-shadow: 0 0 30px 5px rgb(125, 250, 160, 0.815);
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
+
+.nav-contac-btn:hover::before {
+-webkit-animation: sh02 0.5s 0s linear;
+-moz-animation: sh02 0.5s 0s linear;
+animation: sh02 0.5s 0s linear;
+}
+
+.nav-contac-btn::before {
+content: '';
+display: block;
+width: 0px;
+height: 86%;
+position: absolute;
+top: 7%;
+left: 0%;
+opacity: 0;
+background: #fff;
+box-shadow: 0 0 50px 30px #fff;
+-webkit-transform: skewX(-20deg);
+-moz-transform: skewX(-20deg);
+-ms-transform: skewX(-20deg);
+-o-transform: skewX(-20deg);
+transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+from {
+  opacity: 0;
+  left: 0%;
+}
+
+50% {
+  opacity: 1;
+}
+
+to {
+  opacity: 0;
+  left: 100%;
+}
+}
+
+.nav-contac-btn:active {
+box-shadow: 0 0 0 0 transparent;
+-webkit-transition: box-shadow 0.2s ease-in;
+-moz-transition: box-shadow 0.2s ease-in;
+transition: box-shadow 0.2s ease-in;
+}
+
+
+
+/* ----  Main Part CSS Style ----  */
+main {
+  /* border: 2px solid gold; */
+}
+
+/* Section-1 CSS Style */
+.section-1 {
+  /* border: 2px solid green; */
+  height: 50em;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Sub-Section-1 of Section-1 Style */
+.sec-1-subdiv-1 {
+  /* border: 2px solid rgb(223, 238, 16); */
+  padding: 15px;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.sec-1-subdiv-1 h1 {
+  font-size: 5.5em;
+  margin: 20px 0;
+  color: #7dfaa0;
+  font-weight: 600;
+}
+
+.sec-1-subdiv-1 p:nth-child(1) {
+  font-size: 2em;
+  margin: 0 0;
+  font-weight: 400;
+}
+
+.sec-1-subdiv-1 p {
+  font-size: 1.7em;
+  margin: 20px 0;
+  font-weight: 300;
+}
+
+/* Download and Hire Me btns have separate styling below */
+/* Section-1 Button Size and Width */
+.sec-1-btn-size {
+  margin: 43px 0;
+  padding: 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+
+/* Sub-Section-1 of Section-1 Style */
+.sec-1-subdiv-2 {
+  /* border: 2px solid red; */
+  width: 45vw;
+  height: auto;
+  background-image: url("img/sec-1-img.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Green CV Download Button Style + Hover Effect */
+.download-cv-btn {
+  text-decoration: none;
+  position: relative;
+  padding: 15px 40px;
+  margin: 0 20px 0 0;
+  border-radius: 7px;
+  border: 2px solid #7dfaa0;
+  font-size: 21px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: #7dfaa0;
+  color: #292929;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.download-cv-btn:hover {
+color: #7dfaa0;
+background: #292929;
+box-shadow: 0 0 30px 5px rgb(125, 250, 160, 0.815);
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
+
+.download-cv-btn:hover::before {
+-webkit-animation: sh02 0.5s 0s linear;
+-moz-animation: sh02 0.5s 0s linear;
+animation: sh02 0.5s 0s linear;
+}
+
+.download-cv-btn::before {
+content: '';
+display: block;
+width: 0px;
+height: 86%;
+position: absolute;
+top: 7%;
+left: 0%;
+opacity: 0;
+background: #fff;
+box-shadow: 0 0 50px 30px #fff;
+-webkit-transform: skewX(-20deg);
+-moz-transform: skewX(-20deg);
+-ms-transform: skewX(-20deg);
+-o-transform: skewX(-20deg);
+transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+from {
+  opacity: 0;
+  left: 0%;
+}
+
+50% {
+  opacity: 1;
+}
+
+to {
+  opacity: 0;
+  left: 100%;
+}
+}
+
+.download-cv-btn:active {
+box-shadow: 0 0 0 0 transparent;
+-webkit-transition: box-shadow 0.2s ease-in;
+-moz-transition: box-shadow 0.2s ease-in;
+transition: box-shadow 0.2s ease-in;
+}
+
+
+
+/* Transparent Hire Me Button Style + Hover Effect */
+.hire-me-btn {
+  text-decoration: none;
+  position: relative;
+  padding: 15px 40px;
+  border-radius: 7px;
+  border: 2px solid #7dfaa0;
+  font-size: 21px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  background: #292929;
+  color: #7dfaa0;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.hire-me-btn:hover {
+color: #292929;
+background: #7dfaa0;
+box-shadow: 0 0 30px 5px rgb(125, 250, 160, 0.815);
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
+
+.hire-me-btn:hover::before {
+-webkit-animation: sh02 0.5s 0s linear;
+-moz-animation: sh02 0.5s 0s linear;
+animation: sh02 0.5s 0s linear;
+}
+
+.hire-me-btn::before {
+content: '';
+display: block;
+width: 0px;
+height: 86%;
+position: absolute;
+top: 7%;
+left: 0%;
+opacity: 0;
+background: #fff;
+box-shadow: 0 0 50px 30px #fff;
+-webkit-transform: skewX(-20deg);
+-moz-transform: skewX(-20deg);
+-ms-transform: skewX(-20deg);
+-o-transform: skewX(-20deg);
+transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+from {
+  opacity: 0;
+  left: 0%;
+}
+
+50% {
+  opacity: 1;
+}
+
+to {
+  opacity: 0;
+  left: 100%;
+}
+}
+
+.hire-me-btn:active {
+box-shadow: 0 0 0 0 transparent;
+-webkit-transition: box-shadow 0.2s ease-in;
+-moz-transition: box-shadow 0.2s ease-in;
+transition: box-shadow 0.2s ease-in;
+}
+
+
+/* Section-2 CSS Style */
+.section-2 {
+  /* border: 2px solid rgb(31, 88, 245); */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-2 p {
+  color: #BFBFBF;
+  font-size: 1.2em;
+  width: 45vw;
+  text-align: center;
+  padding: 14px 0;
+}
+
+
+/* Section-3 CSS Style */
+.section-3 {
+  /* border: 2px solid rgb(243, 41, 15); */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  padding: 90px 60px;
+}
+
+.sec3-services {
+  /* border: 2px solid rgb(15, 243, 34); */
+  width: 340px;
+  height: 340px;
+  padding: 20px 10px;
+  box-shadow: 12px 11px 0px 11px rgb(31, 31, 31, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  background-color: #3d3d3d;
+}
+
+.sec-3-logo {
+  width: 120px;
+
+}
+
+.sec3-services h2 {
+  font-size: 1.8em;
+  padding: 15px;
+}
+
+.sec3-services p {
+  font-size: 1.1em;
+  padding: 0 5px;
+  color: #BFBFBF;
+  text-align: center;
+  line-height: 24px;
+}
+
+
+/* Section-4 CSS Style */
+.section-4 {
+  /* border: 2px solid gold; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+}
+
+/* Section-5 CSS Style */
+.section-5 {
+  /* border: 2px solid green; */
+  height: 45rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.sec-5-subdiv-1 {
+  /* border: 2px solid rgb(221, 224, 25); */
+  width: 40vw;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#canvas-img {
+  width: 22rem;
+  height: auto;
+  border-radius: 20px;
+  filter: grayscale(1);
+  transition: 
+        scale 550ms ease-out,
+        filter 250ms ease-in-out;
+}
+
+#canvas-img:hover {
+  scale: 1.15;
+  filter: grayscale(0);
+}
+
+.sec-5-subdiv-2 {
+  /* border: 2px solid rgb(238, 21, 21); */
+  width: 50vw;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.sec-5-subdiv-2 h2 {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.sec-5-subdiv-2 p {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  font-weight: 300;
+  line-height: 42px;
+}
+
+/* Section-5 Button Size and Width */
+.sec-5-btn-size {
+  margin: 43px 0;
+  padding: 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Section-6 CSS Style */
+.section-6 {
+  /* border: 2px solid rgb(184, 123, 11); */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 30px;
+  padding: 40px 20px;
+}
+
+.section-6 span {
+  border: 2px solid rgba(235, 235, 236, 0.744);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #3e3e3e;
+  width: 17em;
+  height: 10em;
+  gap: 1em 1em;
+  padding: 5em 0em;
+}
+
+.section-6 span:hover {
+  scale: 1.15;
+  overflow: hidden;
+  transition: scale 450ms ease-out;
+}
+
+.section-6 span:not(:hover) {
+  scale: 1;
+  overflow: hidden;
+  transition: scale 450ms ease-out;
+}
+
+.section-6 span:nth-child(3) {
+  color: #3e3e3e;
+  background-color: #7dfaa0;
+  border: 2px solid #7dfaa0;
+}
+
+.section-6 span:nth-child(3) h4 {
+  font-weight: 500;
+}
+
+.section-6 span h2 {
+  font-size: 4.5em;
+  font-weight: 500;
+}
+
+.section-6 span h4 {
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+/* Section-7 CSS Style */
+.section-7 {
+  /* border: 2px solid rgb(230, 24, 202); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20em;
+  padding: 20px;
+}
+
+.section-7 p {
+  font-size: 1.2em;
+  padding: 15px;
+  color: rgb(234, 234, 234);
+  font-weight: 100;
+  text-align: center;
+  width: 60vw;
+  line-height: 30px;
+}
+
+/* Section-8 CSS Style */
+.section-8 {
+  /* border: 2px solid rgb(11, 154, 211); */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 20px;
+  padding: 26px;
+}
+
+.section-8 span {
+  border: 2px solid gold;
+  width: 23rem;
+  height: 20rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Section-9 CSS Style */
+.section-9 {
+  /* border: 2px solid rgb(248, 35, 35); */
+  padding: 20px;
+  background-image: url("img/sec-9-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50em;
+}
+
+/* Section-9 Button Size and Width */
+.sec-9-btn-size {
+  margin: 43px 0;
+  padding: 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Glasmorphism Effect and Inside Styling */
+#glass-palatte {
+  border: 2px solid rgba(216, 216, 216, 0.757);
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, .03);  
+  backdrop-filter: blur(4px);
+  border-radius: 25px;
+  width: 80vw;
+  height: 23em;
+}
+
+#glass-palatte h1 {
+  font-size: 4em;
+  padding: 15px;
+  color: rgb(234, 234, 234);
+}
+
+#glass-palatte p {
+  font-size: 1.3em;
+  padding: 15px;
+  color: rgb(234, 234, 234);
+  font-weight: 100;
+  text-align: center;
+  width: 75vw;
+}
+
+
+/* ---- Footer Part CSS Style ----  */
+footer {
+  /* border: 2px solid green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Upper Footer Section style */
+.upper-footer-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.upper-footer-div span {
+  border: 0.5px solid rgb(234, 234, 234);
+  width: 32vw;
+}
+
+/* Footer Logo image style */
+#footer-logo {
+  /* border: 2px solid rgb(214, 235, 29); */
+  width: 20rem;
+  border-radius: 8px;
+}
+
+/* Copyright Section style */
+#copyright-span {
+  /* border: 2px solid rgb(214, 235, 29); */
+  color: #4dc56e;
+  padding: 0.7rem 0 1rem 0;
+  font-size: 0.85rem;
+  font-weight: 200;
+}
+
+/* ---- Social Links Animation ---- */
+ul {
+  list-style: none;
+}
+
+.example-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.example-2 .icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+.example-2 .icon-content .tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+.example-2 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -50px;
+}
+.example-2 .icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+.example-2 .icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.example-2 .icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+.example-2 .icon-content a:hover {
+  color: white;
+}
+.example-2 .icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.example-2 .icon-content a:hover .filled {
+  height: 100%;
+}
+
+.example-2 .icon-content a[data-social="linkedin"] .filled,
+.example-2 .icon-content a[data-social="linkedin"] ~ .tooltip {
+  background-color: #0274b3;
+}
+
+.example-2 .icon-content a[data-social="github"] .filled,
+.example-2 .icon-content a[data-social="github"] ~ .tooltip {
+  background-color: #1f1f1f;
+}
+.example-2 .icon-content a[data-social="instagram"] .filled,
+.example-2 .icon-content a[data-social="instagram"] ~ .tooltip {
+  background: linear-gradient(
+    45deg,
+    #405de6,
+    #5b51db,
+    #b33ab4,
+    #c135b4,
+    #e1306c,
+    #fd1f1f
+  );
+}
+
+/* ---------- Media Query for 1080p Monitors and Displays ---------- */
+@media screen and (min-width: 1919px) {
+
+/* Green Design Bar Style */
+.green-bar {
+  /* border: 2px solid gold; */
+  color: #7dfaa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.green-bar span {
+  margin: 10px 7px 7px 7px ;
+  width: 19px;
+  height: 19px;
+  border-radius: 50px;
+  border: 2px solid #7dfaa0;
+  background-color: #7dfaa0;
+}
+
+.green-bar span:nth-child(odd) {
+  width: 180px;
+  height: 7px;
+} 
+
+  /* Center Heading Style */
+  .center-heading {
+    /* border: 2px solid red; */
+    font-size: 4rem;
+  }
+
+  /* --- Header style --- */
+  header {
+    width: 90vw;
+    margin-top: 45px;
+  }
+
+  li {
+    font-size: 1.3em;
+    font-weight: 300;
+  }
+
+  .nav-contac-btn {
+    margin: 2px 0 0 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+  
+/* --- Section-1 Styling --- */
+  .section-1 {
+    height: 60em;
+  }
+  
+  .sec-1-subdiv-1 {
+    padding: 35px;
+    width: 43vw;
+  }
+  
+  .sec-1-subdiv-1 h1 {
+    font-size: 6rem;
+  }
+  
+  .sec-1-subdiv-1 p:nth-child(1) {
+    font-size: 2.7rem;
+  }
+  
+  .sec-1-subdiv-1 p {
+    font-size: 2rem;
+  }
+  
+  .sec-1-subdiv-2 {
+    width: 41vw;
+  }
+  
+  .download-cv-btn {
+    padding: 15px 40px;
+    margin: 0px 35px 0 0;
+    font-size: 1.4rem;
+  }
+  
+  .hire-me-btn {
+    padding: 15px 40px;
+    font-size: 1.4rem;
+  }
+  
+/* --- Section-2 Styling --- */
+  .section-2 p {
+    color: #BFBFBF;
+    font-size: 1.5em;
+    width: 45vw;
+    text-align: center;
+    padding: 14px 0;
+  }
+  
+/* --- Section-3 Styling --- */
+.section-3 {
+  gap: 120px 100px;
+  padding: 90px 60px;
+  margin: 6rem 0;
+}
+
+.sec3-services {
+  width: 440px;
+  height: 440px;
+  padding: 20px 10px;
+  box-shadow: 18px 18px 0px 18px rgb(31, 31, 31, 0.7);
+}
+
+.sec-3-logo {
+  width: 10rem;
+}
+
+.sec3-services h2 {
+  font-size: 2.5rem;
+  padding: 15px;
+}
+
+.sec3-services p {
+  font-size: 1.4rem;
+  padding: 0 10px;
+  line-height: 35px;
+}
+
+/* --- Section-5 Styling --- */
+.section-5 {
+  height: 55rem;
+}
+
+#canvas-img {
+  width: 25rem;
+}
+
+.sec-5-subdiv-2 h2 {
+  font-size: 2.6rem;
+  margin: 20px 0;
+}
+
+.sec-5-subdiv-2 p {
+  font-size: 1.7rem;
+  line-height: 50px;
+}
+
+.green-button {
+  padding: 20px 50px;
+  margin: 0 30px 0 0;
+  font-size: 1.4rem;
+}
+
+.transparent-button {
+  padding: 20px 50px;
+  font-size: 1.4rem;
+}
+
+/* --- Section-5 Styling --- */
+.section-6 {
+  margin: 2rem 0;
+  gap: 30px 50px;
+  padding: 40px 20px;
+}
+
+.section-6 span {
+  width: 21rem;
+  height: 13rem;
+  gap: 1em 1em;
+  padding: 5em 0em;
+}
+
+.section-6 span h2 {
+  font-size: 5.5em;
+  font-weight: 600;
+}
+
+.section-6 span h4 {
+  font-size: 1.7em;
+  font-weight: 400;
+}
+
+.section-7 {
+  height: 22rem;
+}
+
+.section-7 p {
+  font-size: 1.5rem;
+}
+
+/* --- Section-8 Styling --- */
+.section-8 {
+  gap: 30px 30px;
+  padding: 26px;
+}
+
+.section-8 span {
+  border: 2px solid gold;
+  width: 34rem;
+  height: 30rem;
+}
+
+/* --- Section-9 and Glassmorphism Styling --- */
+.section-9 {
+  height: 55rem;
+}
+
+#glass-palatte {
+  width: 80vw;
+  height: 30rem;
+}
+
+#glass-palatte p {
+  font-size: 1.7em;
+  padding: 15px;
+  color: rgb(234, 234, 234);
+  font-weight: 100;
+  text-align: center;
+  width: 75vw;
+  line-height: 2.8rem;
+}
+
+/* Footer Logo image style */
+#footer-logo {
+  width: 22rem;
+  border-radius: 8px;
+}
+
+/* Copyright Section style */
+#copyright-span {
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+}
+
+
+/* ---------- Media Query under 1000px width for Tablets ---------- */
+@media screen and (max-width: 1000px) {
+
+/* Green Design Bar Style */
+.green-bar {
+  /* border: 2px solid gold; */
+  color: #7dfaa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.green-bar span {
+  margin: 10px 7px 7px 7px ;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  border: 2px solid #7dfaa0;
+  background-color: #7dfaa0;
+}
+
+.green-bar span:nth-child(odd) {
+  width: 125px;
+  height: 5px;
+} 
+
+/* Center Heading Style */
+.center-heading {
+  /* border: 2px solid red; */
+  font-size: 3rem;
+}
+
+/* --- Header style --- */
+header {
+  width: 90vw;
+  margin-top: 45px;
+  flex-direction: column;
+}
+
+nav {
+  /* border: 2px solid blue; */
+  margin-top: 1rem;
+} 
+
+li {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.nav-contac-btn {
+  margin: 2px 0 0 20px;
+  font-size: 1.1em;
+  font-weight: 500;
+}  
+
+/* --- Section-1 Styling --- */
+.section-1 {
+  height: 45em;
+}
+
+.sec-1-subdiv-1 {
+  padding: 35px;
+  width: 43vw;
+}
+
+.sec-1-subdiv-1 h1 {
+  font-size: 4rem;
+}
+
+.sec-1-subdiv-1 p:nth-child(1) {
+  font-size: 1.8rem;
+}
+
+.sec-1-subdiv-1 p {
+  font-size: 1.5rem;
+}
+
+.sec-1-subdiv-2 {
+  width: 43vw;
+}
+
+.download-cv-btn {
+  padding: 6px 6px;
+  margin: 0px 20px 0 0;
+  font-size: 0.9rem;
+}
+
+.hire-me-btn {
+  padding: 6px 8px;
+  font-size: 0.9rem;
+}
+
+/* --- Section-2 Styling --- */
+.section-2 p {
+  color: #BFBFBF;
+  font-size: 1.2em;
+  width: 75vw;
+  text-align: center;
+  padding: 14px 0;
+}
+
+/* --- Section-3 Styling --- */
+.section-3 {
+  gap: 60px 50px;
+  padding: 70px 45px;
+  margin: 3rem 0;
+}
+
+.sec3-services {
+  width: 300px;
+  height: 280px;
+  padding: 20px 10px;
+  box-shadow: 13px 11px 0px 13px rgb(31, 31, 31, 0.7);
+}
+
+.sec-3-logo {
+  width: 5.5rem;
+}
+
+.sec3-services h2 {
+  font-size: 2rem;
+  padding: 5px;
+}
+
+.sec3-services p {
+  font-size: 1rem;
+  padding: 0 10px;
+  line-height: 23px;
+}
+
+/* --- Section-5 Styling --- */
+.section-5 {
+  height: auto;
+}
+
+.sec-5-subdiv-1 {
+  width: 50vw;
+  padding: 10px;
+}
+
+#canvas-img {
+  width: 20rem;
+}
+
+.sec-5-subdiv-2 h2 {
+  font-size: 2rem;
+  margin: 15px 0;
+}
+
+.sec-5-subdiv-2 p {
+  font-size: 1.2rem;
+  line-height: 31px;
+}
+
+.green-button {
+  padding: 10px 20px;
+  margin: 0 30px 0 0;
+  font-size: 1.3rem;
+}
+
+.transparent-button {
+  padding: 11px 20px;
+  font-size: 1.2rem;
+}
+
+/* --- Section-6 Styling --- */
+.section-6 {
+  margin: 2rem 0;
+  gap: 30px 50px;
+  padding: 40px 20px;
+}
+
+.section-6 span {
+  width: 17rem;
+  height: 10rem;
+  gap: 1em 1em;
+  padding: 5em 0em;
+}
+
+.section-6 span h2 {
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.section-6 span h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.section-7 {
+  height: 22rem;
+}
+
+.section-7 p {
+  font-size: 1.2rem;
+  width: 75vw;
+}
+
+/* --- Section-8 Styling --- */
+.section-8 {
+  gap: 30px 30px;
+  padding: 26px;
+}
+
+.section-8 span {
+  border: 2px solid gold;
+  width: 28rem;
+  height: 24rem;
+}
+
+/* --- Section-9 and Glassmorphism Styling --- */
+.section-9 {
+  height: 55rem;
+}
+
+#glass-palatte {
+  width: 80vw;
+  height: 25rem;
+}
+
+#glass-palatte h1 {
+  font-size: 3em;
+}
+
+#glass-palatte p {
+  font-size: 1.4em;
+  padding: 15px;
+  color: rgb(234, 234, 234);
+  font-weight: 100;
+  text-align: center;
+  width: 75vw;
+  line-height: 2.2rem;
+}
+
+/* Footer Logo image style */
+#footer-logo {
+  width: 18rem;
+  border-radius: 8px;
+}
+
+/* Copyright Section style */
+#copyright-span {
+  padding: 0.9rem 0 1rem 0;
+  font-size: 0.8rem;
+  font-weight: 200;
+}
+
+}
+
+/* --- Media Query for toggle Hamburger Menu --- */
+@media screen and (min-width: 700px) {
+  #top-bar{display: none;}
+  header {display: flex;}
+}
+
+/* ---------- Media Query under 700px width for Hamburger ---------- */
+@media screen and (max-width: 700px) {
+
+/* Nav conversion to Mobile Media */
+header {display: none;}
+
+#top-bar {
+  /* border: 2px solid red; */
+  display: flex;
+  width: 100%;
+  padding: 42px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: -10px -20px 0px -20px;
+  height: 3rem;
+  background-color: #404541;
+}
+
+
+/* Green Design Bar Style */
+.green-bar {
+  /* border: 2px solid gold; */
+  color: #7dfaa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.green-bar span {
+  margin: 10px 7px 7px 7px ;
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  border: 2px solid #7dfaa0;
+  background-color: #7dfaa0;
+}
+
+.green-bar span:nth-child(odd) {
+  width: 120px;
+  height: 5px;
+} 
+
+/* Center Heading Style */
+.center-heading {
+  /* border: 2px solid red; */
+  font-size: 3rem;
+}
+
+/* --- Header style --- */
+header {
+  width: 90vw;
+  margin-top: 45px;
+  flex-direction: column;
+}
+
+nav {
+  /* border: 2px solid blue; */
+  margin-top: 1rem;
+} 
+
+li {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.nav-contac-btn {
+  margin: 2px 0 0 20px;
+  font-size: 1.1em;
+  font-weight: 500;
+}  
+
+/* --- Section-1 Styling --- */
+.section-1 {
+  min-height: 45rem;
+  height: auto;
+}
+
+.sec-1-subdiv-1 {
+  padding: 0 25px;
+  width: 100%;
+  min-height: 23rem;
+  height: fit-content;
+}
+
+.sec-1-subdiv-1 h1 {
+  font-size: 4rem;
+  margin: 15px 0;
+}
+
+.sec-1-subdiv-1 p:nth-child(1) {
+  font-size: 1.8rem;
+  margin: 15px 0;
+}
+
+.sec-1-subdiv-1 p {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  line-height: 32px;
+}
+
+.sec-1-btn-size {
+  margin: 15px 0;
+}
+
+.sec-1-subdiv-2 {
+  width: 100%;
+  min-height: 26rem;
+  height: fit-content;
+  margin: 4rem 0;
+}
+
+.download-cv-btn {
+  padding: 9px 14px;
+  margin: 0px 20px 0 0;
+  font-size: 1.3rem;
+}
+
+.hire-me-btn {
+  padding: 8px 16px;
+  font-size: 1.4rem;
+}
+
+/* --- Section-2 Styling --- */
+.section-2 p {
+  color: #BFBFBF;
+  font-size: 1.6em;
+  width: 85vw;
+  line-height: 32px;
+  text-align: center;
+  padding: 14px 0;
+}
+
+
+
+/* --- Section-3 Styling --- */
+.section-3 {
+  gap: 100px 50px;
+  padding: 70px 45px;
+  margin: 3rem 0;
+}
+
+.sec3-services {
+  width: 58vw;
+  height: fit-content;
+  min-height: 390px;
+  padding: 20px 20px;
+  box-shadow: 13px 11px 0px 13px rgb(31, 31, 31, 0.7);
+}
+
+.sec-3-logo {
+  width: 8rem;
+  padding: 5px;
+  /* border: 1px solid red; */
+}
+
+.sec3-services h2 {
+  font-size: 2.5rem;
+  padding: 9px;
+}
+
+.sec3-services p {
+  font-size: 1.3rem;
+  padding: 4px 10px;
+  line-height: 28px;
+}
+
+/* --- Section-5 Styling --- */
+.section-5 {
+  /* border: 2px solid red; */
+  min-height: 55rem;
+  justify-content: center;
+  height: fit-content;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.sec-5-subdiv-1 {
+  /* border: 2px solid rgb(228, 241, 44); */
+  width: 85vw;
+  min-height: 35rem;
+height: fit-content;
+  padding: 10px;
+}
+
+#canvas-img {
+  width: 20rem;
+}
+
+.sec-5-subdiv-2 {
+  width: 90vw;
+}
+
+.sec-5-subdiv-2 h2 {
+  font-size: 2.4rem;
+  margin: 15px 0;
+}
+
+.sec-5-subdiv-2 p {
+  font-size: 1.4rem;
+  line-height: 35px;
+}
+
+.sec-5-btn-size {
+  margin: 15px 0;
+}
+
+.green-button {
+  padding: 10px 18px;
+  font-size: 1.3rem;
+}
+
+.transparent-button {
+  padding: 10px 17px;
+  font-size: 1.3rem;
+}
+
+/* --- Section-6 Styling --- */
+.section-6 {
+  margin: 2rem 0;
+  gap: 30px 50px;
+  padding: 40px 20px;
+}
+
+.section-6 span {
+  width: 17rem;
+  height: 10rem;
+  gap: 1em 1em;
+  padding: 5em 0em;
+}
+
+.section-6 span h2 {
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.section-6 span h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.section-7 {
+  height: 22rem;
+}
+
+.section-7 p {
+  font-size: 1.5rem;
+  width: 88vw;
+  line-height: 32px;
+}
+
+/* --- Section-8 Styling --- */
+.section-8 {
+  gap: 30px 30px;
+  padding: 26px;
+}
+
+.section-8 span {
+  border: 2px solid gold;
+  width: 28rem;
+  height: 24rem;
+}
+
+/* --- Section-9 and Glassmorphism Styling --- */
+.section-9 {
+  height: 55rem;
+}
+
+#glass-palatte {
+  width: 80vw;
+  min-height: 35rem;
+  height: fit-content;
+}
+
+#glass-palatte h1 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+#glass-palatte p {
+  font-size: 1.5rem;
+  padding: 15px;
+  color: rgb(234, 234, 234);
+  font-weight: 100;
+  text-align: center;
+  width: 80vw;
+  line-height: 2.5rem;
+}
+
+.sec-9-btn-size {
+  /* border: 2px solid red; */
+  display: flex;
+  padding: 0 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: fit-content;
+  gap: 0 1.4rem;
+}
+
+.sec-9-btn-green {
+  margin: 10px 0;
+  padding: 10px 22px;
+  font-size: 1.4rem;
+}
+
+.sec-9-btn-trans {
+  margin: 10px 0;
+  padding: 11px 17px;
+  font-size: 1.4rem;
+}
+
+/* --- Footer section style --- */
+.upper-footer-div span {
+  border: 0.5px solid rgb(234, 234, 234);
+  width: 12vw;
+}
+
+/* Footer Logo image style */
+#footer-logo {
+  width: 17rem;
+  border-radius: 8px;
+}
+
+/* Copyright Section style */
+#copyright-span {
+  padding: 0.9rem 0 1rem 0;
+  font-size: 0.7rem;
+  font-weight: 200;
+}
+
+}
+
+
+/* ---------- Media Query under 430px width for Mobiles ---------- */
+@media screen and (max-width: 432px) {
+
+/* Nav conversion to Mobile Media */
+header {display: none;}
+
+#top-bar {
+
+  body {
+    width: 99vw;
+    overflow-x: hidden;
+  }
+
+  /* border: 2px solid red; */
+  display: flex;
+  width: 100%;
+  padding: 42px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: -10px -20px 0px -20px;
+  height: 5rem;
+  background-color: #404541;
+}
+
+
+/* Green Design Bar Style */
+.green-bar {
+  /* border: 2px solid gold; */
+  color: #7dfaa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.green-bar span {
+  margin: 10px 7px 7px 7px ;
+  width: 14px;
+  height: 14px;
+  border-radius: 50px;
+  border: 2px solid #7dfaa0;
+  background-color: #7dfaa0;
+}
+
+.green-bar span:nth-child(odd) {
+  width: 100px;
+  height: 4px;
+} 
+
+/* Center Heading Style */
+.center-heading {
+  font-size: 2.5rem;
+} 
+
+
+/* --- Header style --- */
+header {
+  width: 90vw;
+  margin-top: 45px;
+  flex-direction: column;
+}
+
+nav {
+  /* border: 2px solid blue; */
+  margin-top: 1rem;
+} 
+
+li {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.nav-contac-btn {
+  margin: 2px 0 0 20px;
+  font-size: 1.1em;
+  font-weight: 500;
+}  
+
+/* --- Section-1 Styling --- */
+.section-1 {
+  min-height: 45rem;
+  height: auto;
+}
+
+.sec-1-subdiv-1 {
+  padding: 0 25px;
+  width: 100%;
+  min-height: 23rem;
+  height: fit-content;
+}
+
+.sec-1-subdiv-1 h1 {
+  font-size: 4rem;
+  margin: 15px 0;
+}
+
+.sec-1-subdiv-1 p:nth-child(1) {
+  font-size: 1.8rem;
+  margin: 15px 0;
+}
+
+.sec-1-subdiv-1 p {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  line-height: 32px;
+}
+
+.sec-1-subdiv-2 {
+  width: 100%;
+  min-height: 26rem;
+  height: fit-content;
+  margin: 0;
+}
+
+.sec-1-btn-size {
+  /* border: 2px solid red; */
+  display: flex;
+  padding: 0 10px;
+  margin: 4rem 0 2rem 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: fit-content;
+}
+
+.download-cv-btn {
+  margin: 10px 0;
+  padding: 11px 17px;
+}
+
+.hire-me-btn {
+  margin: 10px 0;
+  padding: 9px 59px;
+}
+
+
+/* --- Section-2 Styling --- */
+.section-2 p {
+  color: #BFBFBF;
+  font-size: 1.4rem;
+  width: 85vw;
+  line-height: 2rem;
+  text-align: center;
+  padding: 14px 0;
+}
+
+
+
+/* --- Section-3 Styling --- */
+.section-3 {
+  gap: 100px 50px;
+  padding: 40px 30px;
+  margin: 3rem 0;
+}
+
+.sec3-services {
+  width: 75vw;
+  height: fit-content;
+  min-height: 450px;
+  padding: 20px 20px;
+  box-shadow: 9px 9px 0px 9px rgb(31, 31, 31, 0.7);
+}
+
+.sec-3-logo {
+  width: 7rem;
+  padding: 5px;
+  /* border: 1px solid red; */
+}
+
+.sec3-services h2 {
+  font-size: 2.2rem;
+  padding: 5px;
+}
+
+.sec3-services p {
+  font-size: 1.4rem;
+  padding: 4px 10px;
+  line-height: 32px;
+}
+
+/* --- Section-5 Styling --- */
+.section-5 {
+  /* border: 2px solid red; */
+  min-height: 55rem;
+  justify-content: center;
+  height: fit-content;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.sec-5-subdiv-1 {
+  /* border: 2px solid rgb(228, 241, 44); */
+  width: 85vw;
+  min-height: 35rem;
+height: fit-content;
+  padding: 10px;
+}
+
+#canvas-img {
+  width: 18rem;
+}
+
+.sec-5-subdiv-2 {
+  width: 95vw;
+}
+
+.sec-5-subdiv-2 h2 {
+  font-size: 1.8rem;
+  margin: 8px 0;
+}
+
+.sec-5-subdiv-2 p {
+  font-size: 1.2rem;
+  line-height: 32px;
+}
+
+.sec-5-btn-size {
+  /* border: 2px solid red; */
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.sec-5-btn-green {
+  margin: 10px 0;
+  padding: 12px 30px;
+}
+
+.sec-5-btn-trans {
+  margin: 10px 0;
+  padding: 10px 25px;
+}
+
+/* --- Section-6 Styling --- */
+.section-6 {
+  margin: 2rem 0;
+  gap: 30px 50px;
+  padding: 40px 20px;
+}
+
+.section-6 span {
+  width: 15rem;
+  height: 10rem;
+  gap: 1em 1em;
+  padding: 5em 0em;
+}
+
+.section-6 span h2 {
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.section-6 span h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.section-7 {
+  height: 22rem;
+}
+
+.section-7 p {
+  font-size: 1.3rem;
+  width: 90vw;
+  line-height: 30px;
+}
+
+/* --- Section-8 Styling --- */
+.section-8 {
+  gap: 30px 30px;
+  padding: 26px;
+}
+
+.section-8 span {
+  border: 2px solid gold;
+  min-width: 22rem;
+  width: fit-content;
+  min-height: 21rem;
+  height: fit-content;
+}
+
+/* --- Section-9 and Glassmorphism Styling --- */
+.section-9 {
+  height: 55rem;
+}
+
+.sec-9-btn-size {
+  /* border: 2px solid red; */
+  display: flex;
+  padding: 0 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: fit-content;
+}
+
+.sec-9-btn-green {
+  margin: 10px 0;
+  padding: 13px 28px;
+}
+
+.sec-9-btn-trans {
+  margin: 10px 0;
+}
+
+#glass-palatte {
+  width: 90vw;
+  min-height: 35rem;
+  height: fit-content;
+}
+
+#glass-palatte h1 {
+  font-size: 2em;
+}
+
+#glass-palatte p {
+  font-size: 1.4rem;
+  padding: 15px;
+  color: rgb(234, 234, 234);
+  font-weight: 100;
+  text-align: center;
+  width: 75vw;
+  line-height: 2.4rem;
+}
+
+/* --- Footer section style --- */
+.upper-footer-div span {
+  border: 0.5px solid rgb(234, 234, 234);
+  width: 12vw;
+}
+
+/* Footer Logo image style */
+#footer-logo {
+  width: 15rem;
+  border-radius: 8px;
+}
+
+/* Copyright Section style */
+#copyright-span {
+  padding: 0.9rem 0 1.2rem 0;
+  font-size: 0.6rem;
+  font-weight: 200;
+}
+
+}
